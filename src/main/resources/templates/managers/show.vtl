@@ -1,12 +1,5 @@
 <p class="pageHeader">Manager details</p>
 
-<div>
-    <form action="/managers/$manager.getId()/delete" method="post">
-        <input type="submit" value="Delete Manager"></form>
-</div>
-
-<br>
-
 <div class="container">
     <table>
         <tr>
@@ -27,3 +20,9 @@
         </tr>
     </table>
 </div>
+
+<br>
+
+<form action="/managers/$manager.getId()/delete" method="post">
+    <input type="submit" value="Delete Manager">
+</form>

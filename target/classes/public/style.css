@@ -20,22 +20,17 @@ table {
     text-align: center;
 }
 
-tbody {
-
-}
-
-div {
-
-}
-
-header, footer, parse {
-
-}
-
 .pageHeader {
     font-size: 1.5rem;
 }
 
-input {
-    color: red;
+input[type="submit" i] {
+    color: maroon;
+    background-color: white;
+    font-size: 1rem;
+    border: solid 2px maroon;
+}
+
+input[type="submit" i]:hover {
+    background-color: lightgrey;
 }

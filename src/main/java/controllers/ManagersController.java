@@ -49,7 +49,6 @@ public class ManagersController {
         }, new VelocityTemplateEngine());
 
         post("/managers", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
             String firstName = req.queryParams("firstName");
             String lastName = req.queryParams("lastName");
             int salary = Integer.valueOf(req.queryParams("salary"));
@@ -63,7 +62,6 @@ public class ManagersController {
         }, new VelocityTemplateEngine());
 
         post("/managers/:id/delete", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
             int managerId = Integer.parseInt(req.params(":id"));
             Manager manager = DBHelper.find(managerId, Manager.class);
             DBHelper.delete(manager);
