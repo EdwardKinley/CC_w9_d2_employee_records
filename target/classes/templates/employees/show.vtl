@@ -10,6 +10,9 @@
             <th>Last Name</th>
             <th>Salary</th>
             <th>Department</th>
+            #if ($employee.getBudget())
+            <th>Budget</th>
+            #end
         </tr>
         <tr>
             <td>$employee.getId()</td>
@@ -17,6 +20,9 @@
             <td>$employee.getLastName()</td>
             <td>$employee.getSalary()</td>
             <td>$employee.getDepartment().getTitle()</td>
+            #if ($employee.getBudget())
+            <td>$employee.getBudget()</td>
+            #end
         </tr>
     </table>
 </div>

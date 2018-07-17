@@ -111,4 +111,6 @@ public class DBHelper {
         cr.add(Restrictions.eq("department", department));
         return (Manager) cr.uniqueResult();
     }
+
+
 }
