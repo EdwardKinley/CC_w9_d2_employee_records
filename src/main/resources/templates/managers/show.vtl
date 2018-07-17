@@ -23,6 +23,12 @@
 
 <br>
 
+<form action="/managers/$manager.getId()/edit" method="get">
+    <input type="submit" value="Edit $manager.getFirstName() $manager.getLastName() in Manager database">
+</form>
+
+<br>
+
 <form action="/managers/$manager.getId()/delete" method="post">
     <input type="submit" value="Delete $manager.getFirstName() $manager.getLastName() from Manager database">
 </form>

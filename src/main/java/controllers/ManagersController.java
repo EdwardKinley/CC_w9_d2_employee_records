@@ -61,6 +61,38 @@ public class ManagersController {
             return null;
         }, new VelocityTemplateEngine());
 
+        get("managers/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Department> departments = DBHelper.getAll(Department.class);
+            model.put("departments", departments);
+            int managerId = Integer.parseInt(req.params(":id"));
+            Manager manager = DBHelper.find(managerId, Manager.class);
+            model.put("manager", manager);
+            model.put("template", "templates/managers/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/managers/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String firstName = req.queryParams("firstName");
+            String lastName = req.queryParams("lastName");
+            int salary = Integer.valueOf(req.queryParams("salary"));
+            double budget = Double.valueOf(req.queryParams("budget"));
+            int departmentId = Integer.parseInt(req.queryParams("department"));
+            Department department = DBHelper.find(departmentId, Department.class);
+            int managerId = Integer.parseInt(req.params(":id"));
+            Manager manager = DBHelper.find(managerId, Manager.class);
+            manager.setFirstName(firstName);
+            manager.setLastName(lastName);
+            manager.setSalary(salary);
+            manager.setBudget(budget);
+            manager.setDepartment(department);
+            DBHelper.save(manager);
+            res.redirect("/managers");
+            return null;
+        }, new VelocityTemplateEngine());
+
+
         post("/managers/:id/delete", (req, res) -> {
             int managerId = Integer.parseInt(req.params(":id"));
             Manager manager = DBHelper.find(managerId, Manager.class);
