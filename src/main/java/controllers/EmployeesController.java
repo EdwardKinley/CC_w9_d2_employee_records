@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 import static spark.SparkBase.staticFileLocation;
 
 public class EmployeesController {
@@ -45,6 +46,14 @@ public class EmployeesController {
             Manager manager = new Manager("a", "b", 1, department, 1.0);
             model.put("manager", manager);
             return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/employees/:id/delete", (req, res) -> {
+            int employeeId = Integer.parseInt(req.params(":id"));
+            Employee employee = DBHelper.find(employeeId, Employee.class);
+            DBHelper.delete(employee);
+            res.redirect("/employees");
+            return null;
         }, new VelocityTemplateEngine());
 
     }
