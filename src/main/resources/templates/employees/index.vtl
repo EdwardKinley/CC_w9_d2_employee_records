@@ -3,6 +3,7 @@
 <div>
     <table>
             <tr>
+                <th>id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Salary</th>
@@ -10,6 +11,7 @@
             </tr>
         #foreach ($employee in $employees)
             <tr>
+                <td><a href="/employees/$employee.getId()">$employee.getId()</a></td>
                 <td>$employee.getFirstName()</td>
                 <td>$employee.getLastName()</td>
                 <td>$employee.getSalary()</td>

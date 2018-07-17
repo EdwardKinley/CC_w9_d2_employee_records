@@ -10,6 +10,7 @@
 <div class="container">
     <table>
         <tr>
+            <th>id</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Salary</th>
@@ -18,6 +19,7 @@
         </tr>
         #foreach ($manager in $managers)
         <tr>
+            <td><a href="/managers/$manager.getId()">$manager.getId()</a></td>
             <td>$manager.getFirstName()</td>
             <td>$manager.getLastName()</td>
             <td>$manager.getSalary()</td>

@@ -60,6 +60,15 @@ public class ManagersController {
             return null;
         }, new VelocityTemplateEngine());
 
+        post("/managers/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int managerId = Integer.parseInt(req.params(":id"));
+            Manager manager = DBHelper.find(managerId, Manager.class);
+            DBHelper.delete(manager);
+            res.redirect("/managers");
+            return null;
+        }, new VelocityTemplateEngine());
+
     }
 
 }
