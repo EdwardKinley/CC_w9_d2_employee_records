@@ -35,3 +35,7 @@ header, footer, parse {
 .pageHeader {
     font-size: 1.5rem;
 }
+
+input {
+    color: red;
+}

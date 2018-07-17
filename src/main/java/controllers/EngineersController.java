@@ -21,15 +21,6 @@ public class EngineersController {
 
     private void setupEndpoints() {
 
-        get("engineers/:id", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            model.put("template", "templates/engineers/show.vtl");
-            int engineerId = Integer.parseInt(req.params(":id"));
-            Engineer engineer = DBHelper.find(engineerId, Engineer.class);
-            model.put("engineer", engineer);
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, new VelocityTemplateEngine());
-
         get("/engineers", (req, res) -> {
             Map<String, Object> model = new HashMap();
             model.put("template", "templates/engineers/index.vtl");
@@ -45,6 +36,15 @@ public class EngineersController {
             List<Department> departments = DBHelper.getAll(Department.class);
             model.put("departments", departments);
             model.put("template", "templates/engineers/create.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        get("engineers/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("template", "templates/engineers/show.vtl");
+            int engineerId = Integer.parseInt(req.params(":id"));
+            Engineer engineer = DBHelper.find(engineerId, Engineer.class);
+            model.put("engineer", engineer);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 

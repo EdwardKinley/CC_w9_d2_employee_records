@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static spark.Spark.delete;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
@@ -21,14 +22,6 @@ public class ManagersController {
     }
 
     private void setupEndpoints() {
-        get("managers/:id", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            model.put("template", "templates/managers/show.vtl");
-            int managerId = Integer.parseInt(req.params(":id"));
-            Manager manager = DBHelper.find(managerId, Manager.class);
-            model.put("manager", manager);
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, new VelocityTemplateEngine());
 
         get("/managers", (req, res) -> {
             Map<String, Object> model = new HashMap();
@@ -46,8 +39,17 @@ public class ManagersController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        post("/managers", (req, res) -> {
+        get("managers/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            model.put("template", "templates/managers/show.vtl");
+            int managerId = Integer.parseInt(req.params(":id"));
+            Manager manager = DBHelper.find(managerId, Manager.class);
+            model.put("manager", manager);
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/managers", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
             String firstName = req.queryParams("firstName");
             String lastName = req.queryParams("lastName");
             int salary = Integer.valueOf(req.queryParams("salary"));
@@ -61,13 +63,15 @@ public class ManagersController {
         }, new VelocityTemplateEngine());
 
         post("/managers/:id/delete", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
+//            Map<String, Object> model = new HashMap<>();
             int managerId = Integer.parseInt(req.params(":id"));
             Manager manager = DBHelper.find(managerId, Manager.class);
             DBHelper.delete(manager);
             res.redirect("/managers");
             return null;
         }, new VelocityTemplateEngine());
+
+
 
     }
 
