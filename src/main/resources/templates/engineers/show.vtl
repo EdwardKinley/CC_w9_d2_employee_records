@@ -27,6 +27,12 @@
 
 <br>
 
+<form action="/engineers/$engineer.getId()/edit" method="get">
+    <input type="submit" value="Edit $engineer.getFirstName() $engineer.getLastName() in Engineer database">
+</form>
+
+<br>
+
 <form action="/engineers/$engineer.getId()/delete" method="post">
     <input type="submit" value="Delete $engineer.getFirstName() $engineer.getLastName() from Engineer database">
 </form>

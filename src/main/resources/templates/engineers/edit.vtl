@@ -1,0 +1,23 @@
+<p class="pageHeader">Edit Engineer $engineer.getFirstName() $engineer.getLastName()</p>
+
+<form action="/engineers/$engineer.getId()" method="post">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required value="$engineer.getFirstName()">
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required value="$engineer.getLastName()">
+
+    <label for="salary">Salary (£):</label>
+    <input type="text" id="salary" name="salary" required value="$engineer.getSalary()">
+
+    <label for="department">Department:
+        <select name="department" id="department">
+            #foreach ($department in $departments)
+            <option value="$department.getId()">$department.getTitle()</option>
+            #end
+        </select>
+    </label>
+
+    <input type="submit" value="Save" class="button">
+
+</form>
