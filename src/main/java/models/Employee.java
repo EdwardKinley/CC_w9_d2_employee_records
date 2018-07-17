@@ -69,4 +69,6 @@ public abstract class Employee {
     public void setDepartment(Department department) {
         this.department = department;
     }
+
+
 }

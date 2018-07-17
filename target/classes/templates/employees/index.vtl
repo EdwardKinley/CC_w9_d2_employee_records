@@ -8,6 +8,7 @@
                 <th>Last Name</th>
                 <th>Salary</th>
                 <th>Department</th>
+                <th>Role</th>
             </tr>
         #foreach ($employee in $employees)
             <tr>
@@ -16,6 +17,7 @@
                 <td>$employee.getLastName()</td>
                 <td>$employee.getSalary()</td>
                 <td>$employee.getDepartment().getTitle()</td>
+                <td>$employee.getClass().getSimpleName()</td>
             </tr>
         #end
     </table>
