@@ -10,6 +10,7 @@
             <th>Last Name</th>
             <th>Salary</th>
             <th>Department</th>
+            <th>Role</th>
             #if ($employee.getBudget())
             <th>Budget</th>
             #end
@@ -20,6 +21,7 @@
             <td>$employee.getLastName()</td>
             <td>$employee.getSalary()</td>
             <td>$employee.getDepartment().getTitle()</td>
+            <td>$employee.getClass().getSimpleName()</td>
             #if ($employee.getBudget())
             <td>$employee.getBudget()</td>
             #end
